@@ -1,0 +1,73 @@
+#Node Structure
+
+class Node:
+    def __init__ (self,x):
+        self.data=x
+        self.next=None
+
+#Stack implementing using linked list
+class myStack:
+    def __init__ (self):
+        self.top=None
+        self.count=0
+
+    #push operatiopn
+    def push(self,x):
+        temp =Node(x)
+        temp.next=self.top
+        temp.top=temp
+        self.count+=1
+
+    #pop operation
+    def pop(self):
+        if self.top is None:
+            print("Stack Underflow")
+            return-1
+
+        temp=self.top
+        self.top=self.top.next
+        self.count-=1
+        return temp.data
+
+    #peek operation
+    def peek(self):
+        if self.top is None:
+            print("Stack is empty")
+            return-1
+        return self.top.data
+
+    #check if stack is empty
+    def isEmpty(self):
+        return self.top is None
+
+    #size of stack 
+    def size(self):
+        return self.count
+
+#main program
+st=myStack()
+
+#get number of elements
+n=int(input("Enter number of elements to push:"))
+
+#push elements
+for i in range(n):
+    x=int(input(f"Enter Element{i+1}:"))
+    st.push(x)
+
+#pop one element
+print("/nPopped Element:", st.pop())
+
+#peek
+print("Top Element:", st.peek())
+
+#check Empty
+if st.isEmpty():
+    print("Stack is Empty")
+else:
+    print("Stack is not empty")
+
+#size
+print("Current Size:", st.size())
+          
+        
